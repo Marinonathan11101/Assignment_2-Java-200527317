@@ -1,19 +1,23 @@
 package com.example.assignment_2;
 
-import java.util.ArrayList;
-import java.util.List;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Main {
+import java.io.IOException;
+
+public class Main extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Videogame-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Videogame Store!");
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public static void main(String[] args) {
-
-       Videogame videogame1 = new Videogame("Final Fantasty",70,"Square");
-
-
-
-
-
-
-
+        launch();
     }
 }

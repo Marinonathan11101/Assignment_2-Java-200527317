@@ -60,6 +60,11 @@ public class Videogame {
         String pathname = "Images/"+title+"jpg";
         return new Image(Videogame.class.getResourceAsStream(pathname));
     }
+
+    @Override
+    public String toString() {
+        return (title + " " + price+ " " + "" + company);
+    }
 }
 
 
