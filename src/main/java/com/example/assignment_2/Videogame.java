@@ -1,11 +1,6 @@
 package com.example.assignment_2;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class Videogame {
 
@@ -57,7 +52,7 @@ public class Videogame {
     }
 
     public Image getImage(){
-        String pathname = "Images/"+title+"jpg";
+        String pathname = "Images/"+title+".jpg";
         return new Image(Videogame.class.getResourceAsStream(pathname));
     }
 

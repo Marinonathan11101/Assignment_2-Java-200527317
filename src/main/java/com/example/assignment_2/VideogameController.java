@@ -1,5 +1,7 @@
 package com.example.assignment_2;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,7 +31,7 @@ public class VideogameController implements Initializable {
     private ImageView imageView;
 
     @FXML
-    private ListView<String> listView;
+    private ListView<Videogame> listView;
 
     @FXML
     private Label priceLabel;
@@ -43,28 +45,44 @@ public class VideogameController implements Initializable {
     @FXML
     private TextField titleTextField;
 
+    private Videogame currentGame;
+
+    private ObservableList<Videogame> gameList = FXCollections.observableArrayList();
+
     @FXML
     void addGame(ActionEvent event) {
+        String titleFromUser = titleTextField.getText();
+        double priceFromUser = Double.parseDouble(priceTextField.getText());
+        String companyFromUser = companyTextField.getText();
+        gameList.add(new Videogame(titleFromUser,priceFromUser,companyFromUser));
 
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> wordsList = FXCollections.observableArrayList();
-        wordsList.add(new Videogame("Final Fantasy 7",70,"Square").getTitle());
-        wordsList.add(new Videogame("Final Fantasy 12", 50, "Square").getTitle());
-        wordsList.add(new Videogame("Resident Evil 4", 20, "Capcom").getTitle());
-        wordsList.add(new Videogame("Super Mario Bros 3",80, "Nintendo").getTitle());
-        listView.setItems(wordsList);
+        gameList.add(new Videogame("Final Fantasy 7",70,"Square"));
+        gameList.add(new Videogame("Final Fantasy 12", 50, "Square"));
+        gameList.add(new Videogame("Resident Evil 4", 20, "Capcom"));
+        gameList.add(new Videogame("Super Mario Bros 3",80, "Nintendo"));
+        listView.setItems(gameList);
+        listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Videogame>() {
+            @Override
+            public void changed(ObservableValue<? extends Videogame> observableValue, Videogame s, Videogame t1) {
+
+                currentGame = listView.getSelectionModel().getSelectedItem();
+                titleLabel.setText("Title: "+ currentGame.getTitle());
+                priceLabel.setText("Price "+ currentGame.getPrice());
+                companyLabel.setText("Company: " + currentGame.getCompany());
+                imageView.setImage(currentGame.getImage());
+
+
+
+            }
+        });
 
     }
 
-    public void setVideogame(Store store)
-    {
 
-
-
-    }
 
 }
