@@ -57,8 +57,6 @@ public class VideogameController implements Initializable {
         gameList.add(new Videogame(titleFromUser,priceFromUser,companyFromUser));
 
     }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gameList.add(new Videogame("Final Fantasy 7",70,"Square"));
@@ -72,7 +70,7 @@ public class VideogameController implements Initializable {
 
                 currentGame = listView.getSelectionModel().getSelectedItem();
                 titleLabel.setText("Title: "+ currentGame.getTitle());
-                priceLabel.setText("Price "+ currentGame.getPrice());
+                priceLabel.setText("Price "+ "$"+currentGame.getPrice());
                 companyLabel.setText("Company: " + currentGame.getCompany());
                 imageView.setImage(currentGame.getImage());
 
@@ -82,7 +80,10 @@ public class VideogameController implements Initializable {
         });
 
     }
-
+    @FXML
+    void removeGame(ActionEvent event) {
+        gameList.remove(currentGame);
+    }
 
 
 }

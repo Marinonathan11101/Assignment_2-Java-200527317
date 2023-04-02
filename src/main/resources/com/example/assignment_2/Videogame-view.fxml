@@ -14,7 +14,7 @@
    <children>
       <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="218.0" layoutX="235.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@Images/Final Fantasy 7.jpg" />
+            <Image url="@Images/Final%20Fantasy%207.jpg" />
          </image>
       </ImageView>
       <Label layoutX="261.0" layoutY="27.0" text="Nathan's Game Store">
@@ -74,6 +74,11 @@
          </children>
       </VBox>
       <Button fx:id="addGameButton" layoutX="603.0" layoutY="329.0" mnemonicParsing="false" onAction="#addGame" text="Add Game">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="589.0" layoutY="393.0" mnemonicParsing="false" onAction="#removeGame" text="Remove Game">
          <font>
             <Font size="16.0" />
          </font>
