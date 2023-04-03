@@ -83,5 +83,10 @@
             <Font size="16.0" />
          </font>
       </Button>
+      <Label fx:id="totalPriceOfCart" layoutX="233.0" layoutY="410.0" text="Total Price of Cart: ">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

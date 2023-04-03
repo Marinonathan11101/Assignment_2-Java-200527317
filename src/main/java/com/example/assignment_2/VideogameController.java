@@ -47,22 +47,22 @@ public class VideogameController implements Initializable {
 
     private Videogame currentGame;
 
-    Store store1 = new Store();
+    private ObservableList<Videogame> gameList = FXCollections.observableArrayList();
 
+    @FXML
+    void addGame(ActionEvent event) {
+        String titleFromUser = titleTextField.getText();
+        double priceFromUser = Double.parseDouble(priceTextField.getText());
+        String companyFromUser = companyTextField.getText();
+        gameList.add(new Videogame(titleFromUser,priceFromUser,companyFromUser));
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Videogame finalFantasy7 = new Videogame("Final Fantasy 7",70,"Square");
-        Videogame finalFantasy12 = new Videogame("Final Fantasy 12", 50, "Square");
-        Videogame residentEvil4 = new Videogame("Resident Evil 4", 20, "Capcom");
-        Videogame superMarioBros3 = new Videogame("Super Mario Bros 3",80, "Nintendo");
-        store1.addItems(finalFantasy7);
-        store1.addItems(finalFantasy12);
-        store1.addItems(residentEvil4);
-        store1.addItems(superMarioBros3);
-        ObservableList<Videogame> gameList = FXCollections.observableArrayList(store1.getInventory());
-
-
-
+        gameList.add(new Videogame("Final Fantasy 7",70,"Square"));
+        gameList.add(new Videogame("Final Fantasy 12", 50, "Square"));
+        gameList.add(new Videogame("Resident Evil 4", 20, "Capcom"));
+        gameList.add(new Videogame("Super Mario Bros 3",80, "Nintendo"));
         listView.setItems(gameList);
         listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Videogame>() {
             @Override
@@ -80,30 +80,10 @@ public class VideogameController implements Initializable {
         });
 
     }
-
-
-    @FXML
-    void addGame(ActionEvent event) {
-
-            String titleFromUser = titleTextField.getText();
-            double priceFromUser = Double.parseDouble(priceTextField.getText());
-            String companyFromUser = companyTextField.getText();
-            Videogame newGame = new Videogame(titleFromUser,priceFromUser,companyFromUser);
-            store1.addItems(newGame);
-            ObservableList<Videogame> gameList = FXCollections.observableArrayList(store1.getInventory());
-            listView.setItems(gameList);
-
-
-    }
     @FXML
     void removeGame(ActionEvent event) {
-        store1.removeItems(currentGame);
-        ObservableList<Videogame> gameList = FXCollections.observableArrayList(store1.getInventory());
-        listView.setItems(gameList);
+        gameList.remove(currentGame);
     }
-
-
-
 
 
 }
