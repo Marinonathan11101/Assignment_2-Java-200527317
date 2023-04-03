@@ -14,8 +14,13 @@ public class Store {
         inventory.add(videogame);
 
     }
-    public String getInventory(){
-        return inventory.toString();
+
+    public void removeItems(Videogame videogame){
+        inventory.remove(videogame);
+    }
+    public ArrayList<Videogame> getInventory() {
+
+        return inventory;
     }
 
     public double getTotalPrice(){

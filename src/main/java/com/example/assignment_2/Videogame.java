@@ -58,7 +58,7 @@ public class Videogame {
 
     @Override
     public String toString() {
-        return (title + " " + price+ " " + "" + company);
+        return (title);
     }
 }
 
