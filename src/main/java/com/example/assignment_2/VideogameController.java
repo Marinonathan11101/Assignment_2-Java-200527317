@@ -33,6 +33,9 @@ public class VideogameController implements Initializable {
     private Label totalPriceOfCart;
 
     @FXML
+    private Button removeGameButton;
+
+    @FXML
     private Label titleLabel;
     @FXML
     private TextField titleTextField;
@@ -53,6 +56,8 @@ public class VideogameController implements Initializable {
         store1.addItems(finalFantasy12);
         store1.addItems(residentEvil4);
         store1.addItems(superMarioBros3);
+
+
         ObservableList<Videogame> gameList = FXCollections.observableArrayList(store1.getInventory());
 
 
@@ -89,10 +94,21 @@ public class VideogameController implements Initializable {
     }
     @FXML
     void removeGame(ActionEvent event) {
-        gameList.remove(currentGame);
-        store1.removeItems(currentGame);
-        ObservableList<Videogame> gameList = FXCollections.observableArrayList(store1.getInventory());
-        listView.setItems(gameList);
+
+        if  (store1.getInventory().size() > 1)
+        {
+            gameList.remove(currentGame);
+            store1.removeItems(currentGame);
+            ObservableList<Videogame> gameList = FXCollections.observableArrayList(store1.getInventory());
+            listView.setItems(gameList);
+        }
+
+        else{
+            removeGameButton.isDisabled();
+            throw new IllegalArgumentException("The store must have at least 1 game");
+
+        }
+
     }
 
 
