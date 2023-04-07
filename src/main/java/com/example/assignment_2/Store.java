@@ -18,6 +18,7 @@ public class Store {
     public void removeItems(Videogame videogame){
         inventory.remove(videogame);
     }
+
     public ArrayList<Videogame> getInventory() {
 
         return inventory;
